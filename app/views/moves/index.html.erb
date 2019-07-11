@@ -1,0 +1,45 @@
+<h1 align='center'>Moves</h1>
+<h2 align='center'>They have to attack in some or other way?!</h2>
+
+<%= will_paginate @moves, class: 'apple_pagination' %>
+<table align='center'>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Pokeys</th>
+    <th>Types</th>
+  </tr>
+  <% @moves.each do |move| %>
+    <tr>
+      <td class='middle-thing'>
+        <%=
+          link_to(
+            move.name,
+            { action: :show, name: move.name },
+            { class: "pokey-button" }
+          )
+        %>
+      </td>
+      <td><%= move.description %></td>
+      <td class='middle-thing'>
+        <%=
+          link_to(
+            move.pokeys.uniq { |pokey| pokey.name }.count,
+            { controller: :pokeys, action: :index, pokeys: move.pokeys.map { |pokey| pokey.name } },
+            class: 'pokey-button'
+          )
+        %>
+      </td>
+      <td class='middle-thing'>
+        <%=
+          link_to(
+            move.types.first.name.capitalize,
+            { controller: :types, action: :show, name: move.types.first.name },
+            { class: "type-button-#{move.types.first.name.downcase}" }
+          )
+        %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @moves, class: 'apple_pagination' %>

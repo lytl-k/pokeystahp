@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PokeyStahp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class='nav-panel'>
+      <%= image_tag('pokeyball.png', class: 'pokeystahp-logo') %>
+      <div class='margin-headers'>
+        <h1 class='margin-headers'>PokeyStahp</h1>
+        <h2 class='margin-headers'>For all your useless Pokey needs...</h2>
+      </div>
+      <ul>
+        <li><%= link_to 'Pokeys', '/pokeys' %></li>
+        <li><%= link_to 'Moves', '/moves' %></li>
+        <li><%= link_to 'Abilities', '/abilities' %></li>
+        <li><%= link_to 'Types', '/types' %></li>
+        <li class='item'>
+          <a>Generations</a>
+          <ul class='submenu'>
+            <li><%= link_to 'Gen 1', { controller: :pokeys, action: :generation, id: '1'} %></li>
+            <li><%= link_to 'Gen 2', { controller: :pokeys, action: :generation, id: '2'} %></li>
+            <li><%= link_to 'Gen 3', { controller: :pokeys, action: :generation, id: '3'} %></li>
+            <li><%= link_to 'Gen 4', { controller: :pokeys, action: :generation, id: '4'} %></li>
+            <li><%= link_to 'Gen 5', { controller: :pokeys, action: :generation, id: '5'} %></li>
+            <li><%= link_to 'Gen 6', { controller: :pokeys, action: :generation, id: '6'} %></li>
+            <li><%= link_to 'Gen 7', { controller: :pokeys, action: :generation, id: '7'} %></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class='body-panel'>
+      <%= yield %>
+    </div>
+  </body>
+</html>

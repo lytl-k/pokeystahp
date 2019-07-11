@@ -1,0 +1,11 @@
+<h1 align='center'>Pokeys Gen <%= @gen %></h1>
+<h2 align='center'>When will these stop?! It...just...never...ends...</h2>
+
+<% if @pokeys.empty? %>
+  <br>
+  <h3 align='center'>----------------------------------------------------------------</h3>
+  <h3 align='center'>There are no Pokeys in this generation...yet...</h3>
+  <h3 align='center'>----------------------------------------------------------------</h3>
+<% else %>
+  <%= render 'pokey_list' %>
+<% end %>

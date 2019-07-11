@@ -1,0 +1,45 @@
+<h1 align='center'>Types</h1>
+<h2 align='center'>Yes, different types as well... Cause, why not?!</h2>
+
+<div style='text-align: center;'>
+  <% @types.each_slice(5) do |slice| %>
+    <table style='display: inline-table;'>
+      <tr>
+        <th>Name</th>
+        <th style='word-wrap: break-word; width: 75px;'>Pokeys Count</th>
+        <th style='word-wrap: break-word; width: 75px;'>Moves Count</th>
+      </tr>
+      <% slice.each do |type| %>
+        <tr>
+          <td class='middle-thing'>
+            <%=
+              link_to(
+                type.name.capitalize,
+                { controller: :types, action: :show, name: type.name },
+                { class: "type-button-#{type.name.downcase}" }
+              )
+            %>
+          </td>
+          <td class='middle-thing'>
+            <%=
+              link_to(
+                type.pokeys.count,
+                { controller: :pokeys, action: :index, pokeys: type.pokeys.map(&:name) },
+                class: 'pokey-button'
+              )
+            %>
+          </td>
+          <td class='middle-thing'>
+            <%=
+              link_to(
+                type.moves.count,
+                { controller: :moves, action: :index, moves: type.moves.map(&:name) },
+                class: 'pokey-button'
+              )
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

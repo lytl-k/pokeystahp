@@ -1,0 +1,15 @@
+# Basic tables and models
+rails generate model Pokey name:string description:text parent_id:integer generation:integer
+rails generate model Type name:string
+rails generate model Ability name:string category:string power:integer accuracy:integer
+rails generate model Stat pokey_id:integer height:float weight:float hit_points:integer attack:integer defense:integer growth_rate:integer special_attack:integer special_defense:integer speed:integer stat:string
+
+# Join tables
+rails generate migration CreatePokeyTypesJoinTable
+rails generate migration CreateAbilityTypesJoinTable
+rails generate migration CreatePokeyAbilitiesJoinTable
+
+
+rails generate model PokeyTypes --skip-migration
+rails generate model AbilityTypes --skip-migration
+rails generate model PokeyAbilities --skip-migration

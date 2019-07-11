@@ -1,0 +1,34 @@
+// Place all the styles related to the Types controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin type_button($back_coulour, $colour) {
+  background-color: $back_coulour;
+  color: $colour;
+  border-radius: 25px;
+  border: 5px solid $back_coulour;
+  font: 100% Lucida Console;
+  text-decoration: none;
+  display:block;
+}
+
+.type-button-normal { @include type_button(#DAF7A6, black); }
+.type-button-fire { @include type_button(red, black); }
+.type-button-water { @include type_button(blue, black); }
+.type-button-electric { @include type_button(#FFFF2E , black); }
+.type-button-grass { @include type_button(lightgreen, black); }
+.type-button-ice { @include type_button(aqua, black); }
+.type-button-fighting { @include type_button(maroon, white); }
+.type-button-poison { @include type_button(#117864, black); }
+.type-button-ground { @include type_button(brown, black); }
+.type-button-flying { @include type_button(darkblue, white); }
+.type-button-psychic { @include type_button(purple, white); }
+.type-button-bug { @include type_button(darkgreen, white); }
+.type-button-rock { @include type_button(grey, black); }
+.type-button-ghost { @include type_button(#c39bd3, black); }
+.type-button-dragon { @include type_button(#9b59b6, black); }
+.type-button-dark { @include type_button(#424949, white); }
+.type-button-steel { @include type_button(silver, black); }
+.type-button-fairy { @include type_button(pink, black); }
+
+.type-button-enlarge {size: 500px;}

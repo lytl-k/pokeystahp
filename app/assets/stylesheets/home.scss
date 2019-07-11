@@ -1,0 +1,79 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* General Styles */
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  background-color: lightgrey;
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table tr th {
+  height: 40px;
+  text-align: center;
+  background-color: darkgrey;
+  color: black;
+  font: 100% Lucida Console;
+  font-weight: bold;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+}
+
+.middle-thing {
+  text-align: center;
+  align-content: center;
+}
+
+.box {
+  background-color:#d9d9d9;
+  left:50%;
+}
+
+.apple_pagination {
+  background: lightgrey;
+  text-align: center;
+  padding: 1em;
+  cursor: default;
+}
+.apple_pagination a, .apple_pagination span {
+  padding: 0.2em 0.3em;
+}
+.apple_pagination .disabled {
+  color: #aaaaaa;
+}
+.apple_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background-color: grey;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.5;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+}
+.apple_pagination a {
+  text-decoration: none;
+  color: black;
+}
+.apple_pagination a:hover, .apple_pagination a:focus {
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  background-color: darkgrey;
+}
