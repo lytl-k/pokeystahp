@@ -1,0 +1,58 @@
+<%= will_paginate @pokeys, class: 'apple_pagination' %>
+<table align='center'>
+  <tr>
+    <th>Dex ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Generation</th>
+    <th>Moves by Leveling</th>
+    <th>Moves by TM</th>
+    <th>Moves by Egg</th>
+    <th>Moves by Trading</th>
+    <th>Moves by Tutor</th>
+  </tr>
+  <% @pokeys.each do |pokey| %>
+    <tr>
+      <td class='middle-thing'>
+        <%= pokey.dex_id %>
+      </td>
+      <td class='middle-thing'>
+        <%= link_to pokey.name, { action: :show, name: pokey.name }, class: 'pokey-button' %>
+      </td>
+      <td><%= pokey.description %></td>
+      <td class='middle-thing'>
+        <% pokey.types.each do |type| %>
+          <%=
+            link_to(
+              type.name,
+              { controller: :types, action: :show, name: type.name },
+              { class: "type-button-#{type.name.downcase}" }
+            )
+          %>
+        <% end %>
+      </td>
+      <td class='middle-thing'>
+        <%= link_to pokey.generation, { action: :generation, id: pokey.generation }, class: 'gen-button' %>
+      </td>
+      <% %w[level_up tm egg trading tutor].each do |learnt_by| %>
+        <td class='middle-thing'>
+          <%=
+            link_to(
+              pokey.pokeys_moves.select { |pokey_move| pokey_move.learnt_by == learnt_by}.count,
+              {
+                controller: :moves,
+                action: :index,
+                moves: pokey.pokeys_moves.map do |pokey_move|
+                  pokey_move.move.name if pokey_move.learnt_by == learnt_by
+                end.compact
+              },
+              class: 'pokey-button'
+            )
+          %>
+        </td>
+        <% end %>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @pokeys, class: 'apple_pagination' %>

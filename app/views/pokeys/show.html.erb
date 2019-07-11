@@ -1,0 +1,76 @@
+<h1>Pokey: <%= @pokey.name %></h1>
+
+<p>
+  <% @pokey.types.each do |type| %>
+    <%=
+      link_to(
+        type.name,
+        { controller: :types, action: :show, name: type.name },
+        { class: "type-button-#{type.name.downcase}" }
+      )
+    %>
+  <% end %>
+</p>
+
+<h3>Pre-Evolution</h3>
+<%= link_to_if @pokey.child, @pokey.child&.name, { controller: :pokeys, action: :show, name: @pokey.child&.name } %>
+<h3>Evolutions</h3>
+<% @pokey.parents.each do |parent| %>
+  <%= link_to parent.name, { controller: :pokeys, action: :show, name: parent.name } %>
+<% end %>
+<p></p>
+<h3>Stats</h3>
+<table class='records'>
+  <tr>
+    <th></th>
+    <th>Height</th>
+    <th>Weight</th>
+    <th>HP</th>
+    <th>Attack</th>
+    <th>Defense</th>
+    <th>Special Attack</th>
+    <th>Special Defense</th>
+    <th>Speed</th>
+    <th>Growth Rate</th>
+  </tr>
+  <% @pokey.stats.each do |stat| %>
+    <tr>
+      <td style='font-weight: bold; background-color: darkgrey;'><%= stat.stat %></td>
+      <td><%= stat.height %></td>
+      <td><%= stat.weight %></td>
+      <td><%= stat.hit_points %></td>
+      <td><%= stat.attack %></td>
+      <td><%= stat.defense %></td>
+      <td><%= stat.special_attack %></td>
+      <td><%= stat.special_defense %></td>
+      <td><%= stat.speed %></td>
+      <td><%= stat.growth_rate %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Moves</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Category</th>
+    <th>Power</th>
+    <th>Accuracy</th>
+    <th>PP</th>
+    <th>Description</th>
+    <th>Generation</th>
+  </tr>
+  <% @pokey.moves.each do |move| %>
+    <tr>
+      <td><%= move.name %></td>
+      <td><%= move.types.first.name %></td>
+      <td><%= move.category %></td>
+      <td><%= move.power %></td>
+      <td><%= move.accuracy %></td>
+      <td><%= move.power_points %></td>
+      <td><%= move.description %></td>
+      <td><%= move.generation %></td>
+    </tr>
+  <% end %>
+</table>

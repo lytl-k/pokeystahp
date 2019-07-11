@@ -1,0 +1,29 @@
+<h1 align='center'>Abilities</h1>
+<h2 align='center'>Passive abilities just to make these creatures overpowered...</h2>
+
+<%= will_paginate @abilities, class: 'apple_pagination' %>
+<table align='center'>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Pokeys</th>
+  </tr>
+  <% @abilities.each do |ability| %>
+    <tr>
+      <td class='middle-thing'>
+        <%= link_to ability.name, { controller: :abilities, action: :show, name: ability.name }, class: 'pokey-button' %>
+      </td>
+      <td><%= ability.description %></td>
+      <td class='middle-thing'>
+        <%=
+          link_to(
+            ability.pokeys.count,
+            { controller: :pokeys, action: :index, pokeys: ability.pokeys.map { |pokey| pokey.name } },
+            class: 'pokey-button'
+          )
+        %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @abilities, class: 'apple_pagination' %>
